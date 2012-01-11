@@ -8,12 +8,10 @@
 	 * Set the views_counter basic configuration on elgg system
 	 */
 	function views_counter_init() {
-		$CONFIG;
-
 		// Try to add a views counter for the entities selected through the plugin settings
 		set_views_counter();
 		
-		register_translations($CONFIG->pluginspath.'views_counter/languages',true);
+		register_translations(dirname(__FILE__).'/languages',true);
 		elgg_register_page_handler('views_counter','views_counter_page_handler');
 		elgg_extend_view('css','views_counter/css');
 	}
