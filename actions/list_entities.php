@@ -5,5 +5,5 @@
 	 */
 	
 	$entity_type = get_input('entity_type');
-	forward($CONFIG->wwwroot.'pg/views_counter/list_entities/'.$entity_type);
+	forward($CONFIG->wwwroot.'views_counter/list_entities/'.$entity_type);
 ?>

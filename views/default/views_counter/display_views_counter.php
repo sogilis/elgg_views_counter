@@ -22,7 +22,7 @@
 			<?php
 				if ($can_edit = can_edit_entity($vars['entity']->guid)) {
 			?>
-					<a href="<?php echo $vars['url']; ?>pg/views_counter/views_statistics/<?php echo $entity_guid; ?>">
+					<a href="<?php echo $vars['url']; ?>views_counter/views_statistics/<?php echo $entity_guid; ?>">
 			<?php		
 				}
 				

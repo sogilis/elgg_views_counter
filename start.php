@@ -14,7 +14,7 @@
 		set_views_counter();
 		
 		register_translations($CONFIG->pluginspath.'views_counter/languages',true);
-		register_page_handler('views_counter','views_counter_page_handler');
+		elgg_register_page_handler('views_counter','views_counter_page_handler');
 		elgg_extend_view('css','views_counter/css');
 	}
 	
@@ -27,8 +27,8 @@
 		if (isadminloggedin() && (get_context()=='admin') || (get_context()=='views_counter')) {
 			global $CONFIG;
 			
-			add_submenu_item(elgg_echo('views_counter:admin_page'),$CONFIG->wwwroot.'pg/views_counter/list_entities/user','views_counter');
-			add_submenu_item(elgg_echo('views_counter:demo'),$CONFIG->wwwroot.'pg/views_counter/demo','views_counter');
+			add_submenu_item(elgg_echo('views_counter:admin_page'),$CONFIG->wwwroot.'views_counter/list_entities/user','views_counter');
+			add_submenu_item(elgg_echo('views_counter:demo'),$CONFIG->wwwroot.'views_counter/demo','views_counter');
 			add_submenu_item(elgg_echo('views_counter:doc'),$CONFIG->wwwroot.'mod/views_counter/doc/index.html','views_counter');
 		}
 	}
