@@ -17,5 +17,5 @@
 
 	$page_body = elgg_view_layout('two_column_left_sidebar',$area1,$area2);
 
-	page_draw($title,$page_body);
+	elgg_view_page($title,$page_body);
 ?>

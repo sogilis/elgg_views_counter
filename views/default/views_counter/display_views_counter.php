@@ -11,7 +11,7 @@
 			
 			$entity_guid = ($vars['entity']) ? ($vars['entity']->guid) : $vars['entity_guid'];
 			$class = get_views_counter_class();
-			if ((get_plugin_setting('views_counter_container_id','views_counter')) || (get_plugin_setting('display_views_counter','views_counter')=='no')) {
+			if ((elgg_get_plugin_setting('views_counter_container_id','views_counter')) || (elgg_get_plugin_setting('display_views_counter','views_counter')=='no')) {
 				$style = ' style="display: none" ';
 			}
 			

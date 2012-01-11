@@ -7,7 +7,11 @@
 	$entity = ($vars['entity']) ? ($vars['entity']) : (get_entity(get_input('entity_guid')));
 	
 	if ($entity) {
-		if ($html = list_annotations($vars['entity']->guid,'views_counter',20)) {
+	  $html = elgg_list_annotations(array(
+	    'guid'     => $vars['entity']->guid,
+	    'limit'    => 20,
+	    'order_by' => "n_table.time_created asc"));
+		if ($html) {
 ?>
 			<table>
 				<tr>

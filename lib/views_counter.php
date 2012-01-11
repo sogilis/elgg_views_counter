@@ -11,10 +11,15 @@
 		$entity = get_entity($entity_guid);
 		
 		if ($entity) {
-			$user = get_loggedin_user();
+			$user = elgg_get_logged_in_user_entity();
 			// If there is no loggedin user then lets updated the common views counter for all not loggedin users that has owner equal zero
 			$user_guid = ($user) ? ($user->guid) : 0;
-			$views_counter = get_annotations($entity_guid,$entity->type,$entity->getSubtype(),'views_counter','',$user->guid);
+			$views_counter = elgg_get_annotations(array(
+        'guid'    => $entity_guid,
+        'type'    => $entity->type,
+        'subtype' => $entity->getSubtype(),
+        'annotation_name'       => 'views_counter',
+        'annotation_owner_guid' => $user->guid));
 
 			// Update the last view time for this entity to the current time
 			update_last_view_time($entity_guid,$user_guid);
@@ -36,12 +41,17 @@
 	function update_last_view_time($entity_guid,$user_guid) {
 		$entity = get_entity($entity_guid);
 		if (!$user = get_entity($user_guid)) {
-			$user = get_loggedin_user();
+			$user = elgg_get_logged_in_user_entity();
 		}
 		
 		if ($entity && $user) {
 			// Get the last view annotation that has the last view time saved
-			$last_view_time = get_annotations($entity_guid,$entity->type,$entity->getSubtype(),'last_view_time','',$user->guid);
+			$last_view_time = elgg_get_annotations(array(
+        'guid'    => $entity_guid,
+        'type'    => $entity->type,
+        'subtype' => $entity->getSubtype(),
+        'annotation_name'       => 'last_view_time',
+        'annotation_owner_guid' => $user->guid));
 			// It should exists only one annotation that has the last view time
 			$last_view_time = $last_view_time[0];
 	
@@ -62,7 +72,11 @@
 	 * @return Ambigous <number, boolean>
 	 */
 	function get_views_counter($entity_guid,$owner_guid=0) {
-		$views_counter = get_annotations_sum($entity_guid,'','','views_counter','','integer',$owner_guid);
+		$views_counter = elgg_get_annotations(array(
+        'guid'                   => $entity_guid,
+        'annotation_name'        => 'views_counter',
+        'annotation_owner_guid'  => $owner_guid,
+        'annotation_calculation' => 'sum'));
 		$views_counter = ($views_counter) ? ($views_counter) : 0;
 		
 		return $views_counter;
@@ -72,7 +86,7 @@
 	 * Try to set the views counter on the views files based on the pattern followed by elgg for displaying entities
 	 */
 	function set_views_counter() {
-		$add_views_counter = unserialize(get_plugin_setting('add_views_counter','views_counter'));
+		$add_views_counter = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
 		
 		foreach ($add_views_counter as $subtype) {
 			if (($subtype != 'user') && ($subtype != 'group') && ($subtype != 'null') && ($subtype !='groupforumtopic')) {
@@ -128,10 +142,10 @@
 				set_input('views_counter',serialize($already_added_entities));
 				
 				// Get the added types for add a views counter
-				$added_types = unserialize(get_plugin_setting('add_views_counter','views_counter'));
+				$added_types = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
 	
 				// Get the types setted up by the admin for do not allow add the views counter
-				$removed_types = unserialize(get_plugin_setting('remove_views_counter','views_counter'));
+				$removed_types = unserialize(elgg_get_plugin_setting('remove_views_counter','views_counter'));
 				
 				// Save the subtype
 				$subtype = $entity->getSubtype();
@@ -145,7 +159,7 @@
 					// If the views counter is being added for a subtype that was not setted up by the admin then let's set the plugin setting now
 					if (!in_array($subtype,$added_types)) {
 						$added_types[] = $subtype;
-						set_plugin_setting('add_views_counter',serialize($added_types),'views_counter');
+						elgg_set_plugin_setting('add_views_counter',serialize($added_types),'views_counter');
 						system_message(sprintf(elgg_echo('views_counter:new_subtype_added'),$subtype));
 					}
 					
@@ -234,12 +248,12 @@
 	 * 
 	 */
 	function get_views_counter_class() {
-		$remove_css = get_plugin_setting('remove_css_class','views_counter');
+		$remove_css = elgg_get_plugin_setting('remove_css_class','views_counter');
 		if (!$remove_css || $remove_css == 'no') {
 			$class = 'views_counter';
 		}
 		
-		$float = get_plugin_setting('float_direction','views_counter');
+		$float = elgg_get_plugin_setting('float_direction','views_counter');
 		if ($float=='none') {
 			$float = '';
 		}
@@ -262,11 +276,16 @@
 		if($entity) {
 			$user = get_entity($user_guid);
 			if (!$user) {
-				$user = get_loggedin_user();
+				$user = elgg_get_logged_in_user_entity();
 			}
 			
 			// Try to get the metadata views counter, if there is views counter then We may know which time the user made the last saw for this this entity 
-			$last_view_time = get_annotations($entity_guid,$entity->type,$entity->getSubtype(),'last_view_time','',$user->guid);
+			$last_view_time = elgg_get_annotations(array(
+        'guid'    => $entity_guid,
+        'type'    => $entity->type,
+        'subtype' => $entity->getSubtype(),
+        'annotation_name'       => 'last_view_time',
+        'annotation_owner_guid' => $user->guid));
 			$last_view_time = $last_view_time[0];
 
 			if ($last_view_time) {
@@ -289,7 +308,7 @@
 		if ($entity) {
 			$user = get_entity($user_guid);
 			if (!$user) {
-				$user = get_loggedin_user();
+				$user = elgg_get_logged_in_user_entity();
 			}
 			
 			$last_view_time = get_last_view_time($entity->guid,$user->guid);

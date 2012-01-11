@@ -27,5 +27,5 @@
 		?>
 	</td>
 	<td class="views_column"><?php echo $vars['annotation']->value; ?></td>
-	<td class="first_view_column"><?php echo friendly_time($vars['annotation']->time_created); ?></td>
+	<td class="first_view_column"><?php echo elgg_view_friendly_time($vars['annotation']->time_created); ?></td>
 </tr>

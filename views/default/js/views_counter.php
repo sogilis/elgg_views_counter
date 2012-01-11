@@ -25,7 +25,7 @@
 			}
 			
 			function attach_views_counter() {
-				var views_counter_container = "<?php echo get_plugin_setting('views_counter_container_id','views_counter'); ?>";
+				var views_counter_container = "<?php echo elgg_get_plugin_setting('views_counter_container_id','views_counter'); ?>";
 				var parent = document.getElementById(views_counter_container);
 		
 				if (parent) {

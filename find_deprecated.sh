@@ -2,6 +2,37 @@
 
 
 functions="
+get_entities_from_access_id
+get_entities_from_access_collection
+get_entities_from_annotations
+list_entities_from_annotations
+get_library_files
+elgg_validate_action_url
+test_ip
+is_ip_in_array
+get_entities
+delete_entities
+list_registered_entities
+list_entities
+search_for_group
+search_list_groups_by_name
+list_group_search
+get_entities_from_metadata
+get_entities_from_metadata_multi
+menu_item
+search_for_object
+search_list_objects_by_name
+get_entities_from_relationship
+search_for_site
+search_for_user
+list_user_search
+search_list_users_by_name
+extend_view
+get_views
+make_register_object
+delete_object_entity
+delete_user_entity
+
 add_menu
 add_page_owner_handler
 add_site_collection
@@ -155,6 +186,6 @@ widget_type_exists
 cd "$(dirname "$0")"
 
 for f in $functions; do
-  find . -name "*.php" | xargs grep -n "[^a-zA-Z0-9_]$f[^a-zA-Z0-9_]"
+  find . -name "*.php" | xargs grep -n "[^a-zA-Z0-9_]$f\s*("
 done
 

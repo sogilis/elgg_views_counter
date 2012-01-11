@@ -13,7 +13,7 @@
 <table>
 	<?php
 		// Get the previous selected type for add views counter
-		$add_views_counter_values = unserialize(get_plugin_setting('add_views_counter','views_counter'));
+		$add_views_counter_values = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
 		
 		// Get the valid types that the views counter may be added on
 		$valid_types = get_valid_types_for_views_counter();
@@ -52,7 +52,7 @@
 		<h3><?php echo elgg_echo('views_counter:container_id'); ?></h3>
 		<?php
 			// Setting container ID input
-			$value = get_plugin_setting('views_counter_container_id','views_counter');
+			$value = elgg_get_plugin_setting('views_counter_container_id','views_counter');
 			echo elgg_view('input/text',array('internalname'=>'params[views_counter_container_id]','value'=>$value,'class'=>'container_id_input'));
 		?>
 		<br />
@@ -62,10 +62,10 @@
 		
 		<h3><?php echo elgg_echo('views_counter:float_direction'); ?></h3>
 		<?php 
-			$value = get_plugin_setting('float_direction','views_counter');
+			$value = elgg_get_plugin_setting('float_direction','views_counter');
 			if (!$value) {
 				$value = 'right';
-				set_plugin_setting('float_direction','right','views_counter');
+				elgg_set_plugin_setting('float_direction','right','views_counter');
 			}	
 			$options = array(
 				elgg_echo('views_counter:left')=>'float_left',
@@ -79,10 +79,10 @@
 	<div class="views_counter_settings_right">
 		<h3><?php echo elgg_echo('views_counter:display_views_counter'); ?></h3>
 		<?php 
-			$value = get_plugin_setting('display_views_counter','views_counter'); 
+			$value = elgg_get_plugin_setting('display_views_counter','views_counter'); 
 			if (!$value) {
 				$value = 'yes';
-				set_plugin_setting('display_views_counter','yes','views_counter');
+				elgg_set_plugin_setting('display_views_counter','yes','views_counter');
 			}
 			$options = array(
 				elgg_echo('views_counter:yes')=>'yes',
@@ -94,10 +94,10 @@
 		
 		<h3><?php echo elgg_echo('views_counter:remove_class'); ?></h3>
 		<?php
-			$value = get_plugin_setting('remove_css_class','views_counter'); 
+			$value = elgg_get_plugin_setting('remove_css_class','views_counter'); 
 			if (!$value) {
 				$value = 'no';
-				set_plugin_setting('remove_css_class','no','views_counter');
+				elgg_set_plugin_setting('remove_css_class','no','views_counter');
 			}
 			$options = array(
 				elgg_echo('views_counter:yes')=>'yes',

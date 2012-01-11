@@ -55,5 +55,5 @@ $icon = elgg_view(
 	$info = "<span title=\"" . elgg_echo('entity:default:missingsupport:popup') . "\">$info</span>";
 	$icon = "<span title=\"" . elgg_echo('entity:default:missingsupport:popup') . "\">$icon</span>";
 
-	echo elgg_view_listing($icon, $info);
+  echo elgg_view_image_block($icon, $info);
 ?>
