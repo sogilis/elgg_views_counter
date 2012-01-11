@@ -39,26 +39,26 @@
 	 * @param $page
 	 */
 	function views_counter_page_handler($page) {
+	  $pages = dirname(__FILE__) . '/pages/views_counter';
 		if (isset($page[0])) {
 			global $CONFIG;
 			
 			switch($page[0]) {
 				case 'list_entities':
+					admin_gatekeeper();
 					set_input('entity_type',$page[1]);
-					include($CONFIG->pluginspath.'views_counter/admin_page.php');
-					break;
-				case 'create_entity':
-					include($CONFIG->pluginspath.'views_counter/create_demo_entity.php');
+				  include "$pages/list_entities.php";
 					break;
 				case 'demo':
-					include($CONFIG->pluginspath.'views_counter/demo.php');
+				  include "$pages/demo.php";
 					break;
 				case 'doc':
-					include($CONFIG->pluginspath.'views_counter/doc/index.html');
+				  include "$pages/doc.php";
 					break;
 				case 'views_statistics':
+				  admin_gatekeeper();
 					set_input('entity_guid',$page[1]);
-					include($CONFIG->pluginspath.'views_counter/views_statistics.php');
+				  include "$pages/views_statistics.php";
 					break;
 			}
 		}

@@ -6,20 +6,20 @@ See: http://docs.elgg.org/wiki/Plugin_Guidelines
 
 Required
 
-[ ] Use standardized routing with page handlers - Example: Bookmarks plugin.
-[ ]     Page handlers should accept the following standard URLs:
-[ ]         All:page_handler/all
-[ ]         User:page_handler/owner/<username>
-[ ]         User friends':page_handler/friends/<username>
-[ ]         Single entity:page_handler/view/<guid>/<title>
-[ ]         Add:page_handler/add/<container_guid>
-[ ]         Edit:page_handler/edit/<guid>
-[ ]         Group list:page_handler/group/<guid>/all 
-[ ]     Include page handler scripts from the page handler. Almost every page handler should have a page handler script. (Example: bookmarks/all => mod/bookmarks/pages/bookmarks/all.php)
-[ ]     Call set_input() for entity guids in the page handler and use get_input() in the page handler scripts.
-[ ]     Call gatekeeper() and admin_gatekeeper() in the page handler function if required.
-[ ]     The group URL should use the pages/<handler>/owner.php script.
-[ ]     Page handlers should not contain HTML.
+[X] Use standardized routing with page handlers - Example: Bookmarks plugin.
+[.]     Page handlers should accept the following standard URLs:
+[.]         All:page_handler/all
+[.]         User:page_handler/owner/<username>
+[.]         User friends':page_handler/friends/<username>
+[.]         Single entity:page_handler/view/<guid>/<title>
+[.]         Add:page_handler/add/<container_guid>
+[.]         Edit:page_handler/edit/<guid>
+[.]         Group list:page_handler/group/<guid>/all
+[X]     Include page handler scripts from the page handler. Almost every page handler should have a page handler script. (Example: bookmarks/all => mod/bookmarks/pages/bookmarks/all.php)
+[X]     Call set_input() for entity guids in the page handler and use get_input() in the page handler scripts.
+[X]     Call gatekeeper() and admin_gatekeeper() in the page handler function if required.
+[.]     The group URL should use the pages/<handler>/owner.php script.
+[X]     Page handlers should not contain HTML.
 [X]     If upgrading a 1.7 plugin, update the URLs throughout the plugin. (Don't forget to remove /pg/!) 
 [ ] Use standardized page handlers and scripts - Example: Bookmarks plugin.
 [ ]     Store page handler scripts in mod/<plugin>/pages/<page_handler>/<page_name>
