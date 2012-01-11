@@ -1,5 +1,9 @@
 See: http://docs.elgg.org/wiki/Plugin_Guidelines
 
+[ ] TODO
+[X] DONE
+[.] N/A
+
 Required
 
 [ ] Use standardized routing with page handlers - Example: Bookmarks plugin.
@@ -28,13 +32,13 @@ Required
 [ ]     Make sure there are views for $vars['full_view'] == true and $vars['full_view'] == false. $vars['full_view'] replaced $vars['full].
 [ ]     Check for the object in $vars['entity']. Use elgg_instance_of() to make sure it's the type entity you want. Return true to short circuit the view if the entity is missing or wrong.
 [ ]     Use the new object summary view and entity menu to help format. You should use very little markup in these views. 
-[ ] Update action structure - Example: Bookmarks plugin.
-[ ]     Namespace action files and action names (example: mod/blog/actions/blog/save.php => action/blog/save)
-[ ]     Use the following action URLs:
-[ ]         Add:action/plugin/save
-[ ]         Edit:action/plugin/save
-[ ]         Delete:action/plugin/delete 
-[ ]     Make the delete action accept action/<handler>/delete?guid=<guid> so the metadata entity menu has the correct URL by default. 
+[X] Update action structure - Example: Bookmarks plugin.
+[X]     Namespace action files and action names (example: mod/blog/actions/blog/save.php => action/blog/save)
+[.]     Use the following action URLs:
+[.]         Add:action/plugin/save
+[.]         Edit:action/plugin/save
+[.]         Delete:action/plugin/delete 
+[.]     Make the delete action accept action/<handler>/delete?guid=<guid> so the metadata entity menu has the correct URL by default. 
 [ ] If updating a 1.7 plugin, replace calls to functions deprecated in 1.7 because these will produce visible errors on every load in 1.8. 
 
 Recommended

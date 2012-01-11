@@ -220,8 +220,9 @@
 	register_plugin_hook('did_see_last_update_hook','plugin','did_see_last_update_hook');
 	
 	global $CONFIG;
+	$action_dir = dirname(__FILE__) . "/actions";
 	
-	register_action('views_counter/create_demo_entity',false,$CONFIG->pluginspath.'views_counter/actions/create_demo_entity.php',true);
-	register_action('entities/delete',false,$CONFIG->pluginspath.'views_counter/actions/delete_entity.php');
-	register_action('views_counter/list_entities',false,$CONFIG->pluginspath.'views_counter/actions/list_entities.php');
+	register_action('views_counter/create_demo_entity', false, "$action_dir/views_counter/create_demo_entity.php", true);
+	register_action('entities/delete',                  false, "$action_dir/entities/delete.php");
+	register_action('views_counter/list_entities',      false, "$action_dir/views_counter/list_entities.php");
 ?>
