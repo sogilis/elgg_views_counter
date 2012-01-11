@@ -39,7 +39,8 @@ Required
 [.]         Edit:action/plugin/save
 [.]         Delete:action/plugin/delete 
 [.]     Make the delete action accept action/<handler>/delete?guid=<guid> so the metadata entity menu has the correct URL by default. 
-[ ] If updating a 1.7 plugin, replace calls to functions deprecated in 1.7 because these will produce visible errors on every load in 1.8. 
+[ ] If updating a 1.7 plugin, replace calls to functions deprecated in 1.7 because these will produce visible errors on every load in 1.8.
+    http://docs.elgg.org/wiki/Engine/Functions/Deprecated1.8
 
 Recommended
 
