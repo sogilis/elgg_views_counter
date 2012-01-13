@@ -95,7 +95,7 @@
 				if ($subtype == 'user') {
 					elgg_extend_view('user/default','views_counter',490);
 				} else if ($subtype == 'group') {
-					elgg_extend_view('group/group','views_counter',490);
+					elgg_extend_view('group/default','views_counter',490);
 				} else if ($subtype == 'groupforumtopic') {
 					// The groupforumtopic subtype is a common subtype that would be handled by the default system, but the groups plugin is a very bad plugin that do not follow a lot of the elgg patterns
 					elgg_extend_view('forum/viewposts','views_counter/add_to_grouptopics',490);
