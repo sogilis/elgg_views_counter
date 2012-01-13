@@ -5,6 +5,7 @@
 	 */
 
 	$title = elgg_echo('views_counter:demo');
+	elgg_push_breadcrumb($title);
 
 	$area2 .= elgg_view_title($title);
 
@@ -21,5 +22,5 @@
 
 	$page_body = elgg_view_layout('two_column_left_sidebar',$area1,$area2);
 
-	elgg_view_page($title,$page_body);
+	echo elgg_view_page($title,$page_body);
 ?>

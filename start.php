@@ -54,28 +54,27 @@
 	 */
 	function views_counter_page_handler($page) {
 	  $pages = dirname(__FILE__) . '/pages/views_counter';
-		if (isset($page[0])) {
-			global $CONFIG;
-			
+		if (isset($page[0])) {		
 			switch($page[0]) {
-				case 'list_entities':
+				case 'list_entities':	
 					admin_gatekeeper();
-					set_input('entity_type',$page[1]);
+					set_input('entity_type', $page[1]);
 				  include "$pages/list_entities.php";
-					break;
+					return true;
 				case 'demo':
 				  include "$pages/demo.php";
-					break;
+					return true;
 				case 'doc':
 				  include "$pages/doc.php";
-					break;
+					return true;
 				case 'views_statistics':
 				  admin_gatekeeper();
-					set_input('entity_guid',$page[1]);
+					set_input('entity_guid', $page[1]);
 				  include "$pages/views_statistics.php";
-					break;
+					return true;
 			}
 		}
+		return false;
 	}
 
 	/**

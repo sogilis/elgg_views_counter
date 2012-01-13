@@ -88,7 +88,7 @@
 	function set_views_counter() {
 		$add_views_counter = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
 		
-		foreach ($add_views_counter as $subtype) {
+		if($add_views_counter) foreach ($add_views_counter as $subtype) {
 			if (($subtype != 'user') && ($subtype != 'group') && ($subtype != 'null') && ($subtype !='groupforumtopic')) {
 				elgg_extend_view('object/'.$subtype,'views_counter',490);
 			} else {
