@@ -76,40 +76,6 @@
 		}
 		return false;
 	}
-
-	/**
-	 * To manage the settings inputs are more than one value for input (checkboxes)
-	 * 
-	 * @param $hook
-	 * @param $type
-	 * @param $returnvalue
-	 * @param $params
-	 */
-	function views_counter_settings_handler($hook,$type,$returnvalue,$params) {
-		if ($params['plugin'] == 'views_counter') {
-			if (is_array($params['value'])) {
-				if ($params['name'] == 'add_views_counter') {
-					// Get the removed types saved in database
-					$removed_types = unserialize(elgg_get_plugin_setting('remove_views_counter','views_counter'));
-					$removed_types = ($removed_types) ? ($removed_types) : array();
-					// Get the previous added types
-					$previous_types = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
-					// Checking which types were removed for the admin right now and include them in the remove_views_counter array
-					foreach($previous_types as $previous_type) {
-						// If the type was removed right now and It was not already added as a removed type then let's add It now
-						if ((!in_array($previous_type,$params['value'])) && (!in_array($previous_type,$removed_types))) {
-							$removed_types[] = $previous_type;
-						}
-					}
-					// Save It on the plugin settings
-					elgg_set_plugin_setting('remove_views_counter',serialize($removed_types),'views_counter');
-					
-					// Save the add_views_counter settings as a serialized value
-					return serialize($params['value']);
-				}
-			}
-		}
-	}
 	
 	/**
 	 * To indicate that a view couting system exists
@@ -214,8 +180,6 @@
 	elgg_register_event_handler('init','system','views_counter_init');
 	elgg_register_event_handler('pagesetup','system','views_counter_pagesetup');
 	
-	// To manage the settings inputs are more than one value for input (checkboxes)
-	elgg_register_plugin_hook_handler('plugin:setting','plugin','views_counter_settings_handler');
 	// Get the hook 'view_counting_system' from other plugins that may be asking if some view counting system exists
 	elgg_register_plugin_hook_handler('views_counting_system','plugin','views_counter_register');
 	// A hook that may be used by other plugins that want to list the entities by number of views but without get dependent of any specific plugin
@@ -238,4 +202,5 @@
 	elgg_register_action('views_counter/create_demo_entity', "$action_dir/views_counter/create_demo_entity.php", 'admin');
 	elgg_register_action('entities/delete',                  "$action_dir/entities/delete.php");
 	elgg_register_action('views_counter/list_entities',      "$action_dir/views_counter/list_entities.php");
+  elgg_register_action('views_counter/settings/save',      "$action_dir/views_counter/settings/save.php", 'admin');
 ?>

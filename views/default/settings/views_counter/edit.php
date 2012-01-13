@@ -14,7 +14,8 @@
 	<?php
 		// Get the previous selected type for add views counter
 		$add_views_counter_values = unserialize(elgg_get_plugin_setting('add_views_counter','views_counter'));
-		
+		var_export(elgg_get_plugin_setting('add_views_counter','views_counter'));
+
 		// Get the valid types that the views counter may be added on
 		$valid_types = get_valid_types_for_views_counter();
 		
